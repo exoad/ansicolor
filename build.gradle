@@ -1,0 +1,6 @@
+plugins {
+    id 'java'
+}
+
+group 'com.jackmeng'
+version '1.0'
