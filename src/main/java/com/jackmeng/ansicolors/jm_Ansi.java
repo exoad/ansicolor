@@ -7,9 +7,11 @@ import java.util.Objects;
 
 /**
  * <h1>jm_Ansi - ANSI Coloring</h1>
+ * <em>Copyright (C) Jack Meng 2023</em>
  * <p>
- * ANSI provides most consoles with a coloring format that you can use. This
- * simple class helps you to create cascading calls for creating concise and
+ * ANSI provides most consoles with a coloring format that you can use to build
+ * colorful CLI Applications or just to be more pretty with DEBUG messages. This
+ * simple library helps you to create cascading calls for creating concise and
  * readable ANSI display codes. You don't have to mess with making your own and
  * potentially
  * making it overburdened and verbose to use!
@@ -158,6 +160,15 @@ public final class jm_Ansi
     }
 
     /**
+     * The current version
+     * @return A long in the format of YYYYMMDDVV. Where YYYY -> Four digit year, MM -> 2 digit month number, DD -> 2 digit day number, VV -> for version numbering like 1.1 would be "11"
+     */
+    public static long _version()
+    {
+        return 2023_06_13_1_1L;
+    }
+
+    /**
      * Determines if the ANSI printer should return the ANSI formatted or not. If
      * {@link #use_ansi()} returns false, raw content would be returned without
      * formatting.
@@ -284,7 +295,7 @@ public final class jm_Ansi
          * signifies anything that is TO BE FORMATTED and not the things that do the
          * formatting.
          * </p>
-         * <strong>[!] THIS METHOD DESTROYS CASCADING</strong>
+         * <strong>[!] THIS METHOD DESTROYS CASCADING [!]</strong>
          *
          * @return The raw text to format
          */
@@ -431,7 +442,7 @@ public final class jm_Ansi
          * Extracted method
          *
          * <p>
-         * <strong>[!] This method destroys cascading!</strong>
+         * <strong>[!] This method destroys cascading! [!]</strong>
          * </p>
          */
         public void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)
@@ -442,7 +453,7 @@ public final class jm_Ansi
         /**
          * Extracted method
          * <p>
-         * <strong>[!] This method destroys cascading!</strong>
+         * <strong>[!] This method destroys cascading! [!]</strong>
          * </p>
          */
         public int indexOf(String str)
@@ -453,7 +464,7 @@ public final class jm_Ansi
         /**
          * Extracted method
          * <p>
-         * <strong>[!] This method destroys cascading!</strong>
+         * <strong>[!] This method destroys cascading! [!]</strong>
          * </p>
          */
         public int indexOf(String str, int fromIndex)
@@ -572,7 +583,7 @@ public final class jm_Ansi
         /**
          * Extracted method
          * <p>
-         * <strong>[!] This method destroys cascading!</strong>
+         * <strong>[!] This method destroys cascading! [!]</strong>
          * </p>
          */
         public int lastIndexOf(String str)
@@ -583,7 +594,7 @@ public final class jm_Ansi
         /**
          * Extracted method
          * <p>
-         * <strong>[!] This method destroys cascading!</strong>
+         * <strong>[!] This method destroys cascading! [!]</strong>
          * </p>
          */
         public int lastIndexOf(String str, int fromIndex)
@@ -594,7 +605,7 @@ public final class jm_Ansi
         /**
          * Extracted method
          * <p>
-         * <strong>[!] This method destroys cascading!</strong>
+         * <strong>[!] This method destroys cascading! [!]</strong>
          * </p>
          */
         public int length()
@@ -641,7 +652,7 @@ public final class jm_Ansi
         /**
          * Extracted method
          * <p>
-         * <strong>[!] This method destroys cascading!</strong>
+         * <strong>[!] This method destroys cascading! [!]</strong>
          * </p>
          */
         public CharSequence subSequence(int start, int end)
@@ -652,7 +663,7 @@ public final class jm_Ansi
         /**
          * Extracted method
          * <p>
-         * <strong>[!] This method destroys cascading!</strong>
+         * <strong>[!] This method destroys cascading! [!]</strong>
          * </p>
          */
         public String substring(int start)
@@ -663,7 +674,7 @@ public final class jm_Ansi
         /**
          * Extracted method
          * <p>
-         * <strong>[!] This method destroys cascading!</strong>
+         * <strong>[!] This method destroys cascading! [!]</strong>
          * </p>
          */
         public String substring(int start, int end)
@@ -1291,17 +1302,18 @@ public final class jm_Ansi
          */
         public StringBuilder end()
         {
-
             return instance.$ansi_content.deleteCharAt(instance.$ansi_content.lastIndexOf(";"));
         }
 
         /**
          * This method also
          * appends a RESET character at the end to reset all ANSI coloring after.
+         *
+         * Technically this is just a wrapper call to {@link #toString(String)}
          */
         @Override public String toString()
         {
-            return "\033[" + end().append("m").append(content.toString()).append(jm_Ansi.reset()).toString();
+            return toString(content.toString());
         }
 
         /**
@@ -1315,7 +1327,7 @@ public final class jm_Ansi
          */
         public String toString(String content)
         {
-            return "\033[" + end().append("m").append(this.content.append(content)).append(jm_Ansi.reset()).toString();
+            return jm_Ansi.use_ansi() ? "\033[" + end().append("m").append(this.content.append(content)).append(jm_Ansi.reset()).toString() : content;
         }
 
         /**
@@ -1340,24 +1352,82 @@ public final class jm_Ansi
             return "\\033[" + end().append("m").append(content.toString()).append("\\033[0m").toString();
         }
 
-        public void print(PrintStream e)
+        public _ansi print(PrintStream e)
         {
             e.print(toString());
+            return this;
         }
 
-        public void println(PrintStream e)
+        public _ansi println(PrintStream e)
         {
             e.println(toString());
+            return this;
         }
 
-        public void print()
+        /**
+         * Uses the default {@link System#out#print()}
+         */
+        public _ansi print()
         {
             this.print(System.out);
+            return this;
         }
 
-        public void println()
+        /**
+         * Uses the default {@link System#out#println()}
+         */
+        public _ansi println()
         {
             this.println(System.out);
+            return this;
+        }
+
+        /**
+         * Use for end cascading payload submission
+         * @since 1.1
+         * @param ps Suggested {@link PrintStream} to use
+         * @param content The payload
+         * @return The current instance
+         */
+        public _ansi println(PrintStream ps, String content)
+        {
+            ps.println(toString(content));
+            return this;
+        }
+
+        /**
+         * Use for end cascading payload submission
+         * @since 1.1
+         * @param ps Suggested {@link PrintStream} to use
+         * @param content The payload
+         * @return The current instance
+         */
+        public _ansi print(PrintStream ps, String content)
+        {
+            ps.print(toString(content));
+            return this;
+        }
+
+        /**
+         * @since 1.1
+         * @param content
+         * @return
+         */
+        public _ansi print(String content)
+        {
+            System.out.println(toString(content));
+            return this;
+        }
+
+        /**
+         * @since 1.1
+         * @param content
+         * @return
+         */
+        public _ansi println(String content)
+        {
+            System.out.print(toString(content));
+            return this;
         }
 
     }

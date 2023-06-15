@@ -17,7 +17,4 @@ class use_Help
     {
         return v < min ? min : Math.min(v, max);
     }
-
-
-
 }

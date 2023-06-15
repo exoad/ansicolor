@@ -2,5 +2,31 @@ plugins {
     id 'java'
 }
 
+plugins {
+    id 'maven-publish'
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/exoad/ansicolor")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            groupId = 'com.jackmeng'
+            artifactId = 'ansicolor'
+            version = '1.1'
+
+            from(components.java)
+        }
+    }
+}
+
 group 'com.jackmeng'
-version '1.0'
+version '1.1'
