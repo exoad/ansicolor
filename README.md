@@ -19,6 +19,9 @@ You can find the latest premade packages from ![here](https://github.com/exoad/a
 
 The latest version is 1.1
 
+You can review the **JavaDocs** documentation [here](https://exoad.github.io/jm_ansi_docs/)!
+
+
 # Code
 
 
