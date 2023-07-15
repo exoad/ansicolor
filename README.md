@@ -117,12 +117,5 @@ You can download this package right off of GitHub [here](https://github.com/exoa
 > **Warning:** This package does not provide ANSI support detection, so you must do it manually.
 
 
-<<<<<<< HEAD
-=======
-You can review the **JavaDocs** documentation [here](https://exoad.github.io/jm_ansi_docs/)!
-* [**jm_Ansi doc's**](https://exoad.github.io/jm_ansi_docs/com/jackmeng/ansicolors/jm_Ansi.html)
-
-# Code
->>>>>>> 95975bd631e4e055c547c798f99876aa2db76ab7
 
 
