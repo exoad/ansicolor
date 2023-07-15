@@ -114,7 +114,7 @@ Even though styling is quite simple to make, it is important to know that this l
 
 You can download this package right off of GitHub [here](https://github.com/exoad/ansicolor/packages/)!
 
-> **Warning:** This package does not provide ANSI support detection, so you must do it manually.
+> **Warning**: This package does not provide ANSI support detection, so you must do it manually.
 
 
 
