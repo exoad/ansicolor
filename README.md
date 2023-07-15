@@ -33,8 +33,7 @@ System.out.println(make().blue().underline().toString("Different variations!"));
   > Whichever one you want to use is up to you, it's all syntax!
 
 
-* You **insert** jm_Ansi.make("Hello World").yellow().bold().print();
-after the `make` function.<br>These functions range from setting the text background to red (`red_bg()`) to making your text blink (`blink_fast()`)!
+* You **insert** a formatting function after the `make` function.<br>These functions range from setting the text background to red (`red_bg()`) to making your text blink (`blink_fast()`)!
 
   ```java
   jm_Ansi.make().red_bg().blink_fast();
