@@ -33,8 +33,7 @@ System.out.println(make().blue().underline().toString("Different variations!"));
   > Whichever one you want to use is up to you, it's all syntax!
 
 
-* You **insert** jm_Ansi.make("Hello World").yellow().bold().print();
-after the `make` function.<br>These functions range from setting the text background to red (`red_bg()`) to making your text blink (`blink_fast()`)!
+* You **insert** a formatting function after the `make` function.<br>These functions range from setting the text background to red (`red_bg()`) to making your text blink (`blink_fast()`)!
 
   ```java
   jm_Ansi.make().red_bg().blink_fast();
@@ -117,8 +116,12 @@ Even though styling is quite simple to make, it is important to know that this l
 
 You can download this package right off of GitHub [here](https://github.com/exoad/ansicolor/packages/)!
 
+<<<<<<< HEAD
 > [!WARNING]
 > This package does not provide ANSI support detection, so you must do it manually.
+=======
+> **Warning**: This package does not provide ANSI support detection, so you must do it manually.
+>>>>>>> 68731f2778fa1c6c0bc7582699fd3338bdd3768a
 
 
 
