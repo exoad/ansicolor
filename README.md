@@ -41,7 +41,8 @@ after the `make` function.<br>These functions range from setting the text backgr
 
   jm_Ansi.make("Hello World").red_bg().blink_fast();
   ```
-  > **Note**: Ordering doesn't matter for the most part, but if an attribute can override or appears more than once in the cascading, *the later one takes precedence*.
+  > [!NOTE]
+  > Ordering doesn't matter for the most part, but if an attribute can override or appears more than once in the cascading, *the later one takes precedence*.
 
 * Everything **ends** with a jm_Ansi.make("Hello World").yellow().bold().print();
  that can return a string `toString()` or print it directly `print()`
@@ -51,7 +52,8 @@ after the `make` function.<br>These functions range from setting the text backgr
 
   jm_Ansi.make("Hello World").red_bg().blink_fast().print();
   ```
-  > **Note**: If didn't supply an argument with the `make()` function, you can always supply your content at the end! On the other hand, if you supplied the argument beforehand, you can still supply at the end and it will append to your original string.
+  > [!NOTE]
+  > If didn't supply an argument with the `make()` function, you can always supply your content at the end! On the other hand, if you supplied the argument beforehand, you can still supply at the end and it will append to your original string.
 
 #### Turn it off!
 
@@ -87,7 +89,8 @@ jm_Ansi.make(myStr).insert(0, "Insert this here", 0, 4);
 jm_Ansi.make(myStr).append("Append this");
 ```
 
-> **Warning**: There are methods that block cascading if they are called. Avoid methods that don't return `_ansi` unless absolutely necessary.
+> [!WARNING]
+> There are methods that block cascading if they are called. Avoid methods that don't return `_ansi` unless absolutely necessary.
 
 #### Under the hood
 
@@ -114,7 +117,8 @@ Even though styling is quite simple to make, it is important to know that this l
 
 You can download this package right off of GitHub [here](https://github.com/exoad/ansicolor/packages/)!
 
-> **Warning:** This package does not provide ANSI support detection, so you must do it manually.
+> [!WARNING]
+> This package does not provide ANSI support detection, so you must do it manually.
 
 
 
